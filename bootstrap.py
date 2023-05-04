@@ -20,5 +20,5 @@ try:
 except OSError:
     pass
 
-os.system('%s --distribute %s' % (VIRTUALENV_BIN, VIRTUALENV_DIR))
-os.system('%s/bin/pip install -r %s' % (VIRTUALENV_DIR, REQUIREMENTS_PIP))
+os.system(f'{VIRTUALENV_BIN} --distribute {VIRTUALENV_DIR}')
+os.system(f'{VIRTUALENV_DIR}/bin/pip install -r {REQUIREMENTS_PIP}')

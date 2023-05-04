@@ -44,15 +44,14 @@ def consumer_queue(proc_id, queue):
                 # put stop back in queue for other consumers
                 queue.put('STOP')
                 break
-            consumer_data_batch = []
-            consumer_data_batch.append(consumer_data)
+            consumer_data_batch = [consumer_data]
             if queue.qsize() > 500:
-                for i in xrange(50):
+                for _ in xrange(50):
                     consumer_data = queue.get(proc_id, 1)
                     consumer_data_batch.append(consumer_data)
             session = Session()
             batch_insert(session, consumer_data_batch)
-            # logger.info(consumer_data)
+                    # logger.info(consumer_data)
         except Empty:
             pass
 

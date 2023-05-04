@@ -23,15 +23,14 @@ def generate_online_status():
         '"site_id":"{site_id}","timestamp":{timestamp},',
         '"data":{{"status":"{is_online}"}}}}\n',
     )
-    row_str = ''.join(row).format(
+    return ''.join(row).format(
         pk=pk,
         _type=_type,
         _from=_from,
         site_id=site_id,
         timestamp=timestamp,
-        is_online=is_online
+        is_online=is_online,
     )
-    return row_str
 
 
 def generate_chat_message():
@@ -49,15 +48,14 @@ def generate_chat_message():
         '"site_id":"{site_id}","timestamp":{timestamp},',
         '"data":{{"message":"{message}"}}}}\n',
     )
-    row_str = ''.join(row).format(
+    return ''.join(row).format(
         pk=pk,
         _type=_type,
         _from=_from,
         site_id=site_id,
         timestamp=timestamp,
-        message=message
+        message=message,
     )
-    return row_str
 
 if __name__ == '__main__':
     online_status = [generate_online_status() for i in range(100)]

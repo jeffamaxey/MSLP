@@ -19,9 +19,7 @@ class LargeFileParser(object):
         while self.split_files:
             split_file = self.split_files.pop()
             with open(split_file, 'rU') as f:
-                lines = f.readlines()
-                for line in lines:
-                    yield line
+                yield from f.readlines()
             logger.info('removing split_file')
             os.remove(split_file)
         lines = None
